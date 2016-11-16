@@ -5,6 +5,18 @@ var methodOverride = require('method-override');
 
 var app = express();
 
+var models  = require('./models');
+var sequelizeConnection = models.sequelize;
+
+sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
+
+
+.then(function(){
+  return sequelizeConnection.sync({force:true})
+})
+
+
+
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(process.cwd() + '/public'));
 

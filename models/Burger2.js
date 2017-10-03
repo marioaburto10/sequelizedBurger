@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     } 
-  })
+  }
 
   Burger.associate = function (models) {
     Burger.hasOne(models.Customer);

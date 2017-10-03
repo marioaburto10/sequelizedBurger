@@ -1,13 +1,10 @@
-// Customer model
-
-// The Customer has a "customer" attribute of type DataTypes.String
-
+'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Customer = sequelize.define("Customer", {
+  var Customer = sequelize.define('Customer', {
     customerName: {
-      type: DataTypes.STRING,
-      // If a customer is to be created, they must have a name
-      allowNull: false
+    	type: DataTypes.STRING,
+		// If a customer is to be created, they must have a name
+      	allowNull: false
     }
   });
   return Customer;

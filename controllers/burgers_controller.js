@@ -8,12 +8,13 @@ router.get('/', function (req, res){
   res.redirect('/burgers');
 });
 
-// router.get('/burgers', function(req, res){
-//   burger.findAll({
-//     attributes: ['id', 'burger_name', 'devoured']
-//   }).then(function(data){
-//     res.render('index', {burgers: data});
-// });
+router.get('/burgers', function(req, res){
+  burger.findAll({
+    attributes: ['id', 'burger_name', 'devoured']
+  }).then(function(data){
+    res.render('index', {burgers: data});
+  });
+});
 
 router.post('/burgers/create', function(req, res){
 

@@ -1,71 +1,98 @@
-<h1>Burgers!</h1>
+<div class="container">
 
-<h2>Burgers that have not been eaten!</h2>
+    <div class="row top-row">
+      <div class="col s12 center-align" id="top-bar">
+        <img id="burger-image" src="/assets/images/burger.png" alt="burger" />
+        <h1>Eat-A-Burger!</h1>
+      </div>
+    </div>
 
-<ul>
-  {{#each burgers}}
-    {{#unless this.devoured}}
-      <li>
-        {{this.id}}. {{this.burger_name}}
+    <div class="row middle-row">
+      <div class="col s6 center-align not-eaten">
 
-        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-            <input type="hidden" name="devoured" value="1">
-            <button type="submit">DEVOURING TIME!</button>
-        </form>
+        <h3>Burgers that have not been eaten!</h3>
 
-      </li>
-    {{/unless}}
-  {{/each}}
-</ul>
+        <div class="row ">
 
-<h2>Burgers that have been eaten!</h2>
+            {{#each burgers}}
+              {{#unless this.devoured}}
+                <div class="col s9 center-align">
+                
+                  <pre>{{this.id}}. {{this.burger_name}}</pre>
+                </div>
 
-<ul>
-  {{#each burgers}}
-    {{#if this.devoured}}
-      <li>
-        {{this.id}}. {{this.burger_name}}
+                <div class="col s3 center-align">
+                  <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+                      <input type="hidden" name="devoured" value="1">
+                      <button class="btn btn-info pull-right" type="submit">EAT!</button>
+                  </form>
+                </div>
+                
+              {{/unless}}
+            {{/each}}
+        </div>
+      
+      </div>
 
-        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devoured" value="0">
-          <button type="submit">I'M FULL, REMOVE FROM STOMACH!</button>
-        </form>
-      </li>
-    {{/if}}
-  {{/each}}
-</ul>
+      <div class="col-xs-6 text-center eaten">
 
-<h2>Add a burger</h2>
-<form class="create-update-form" action="burgers/create" method="POST">
+        <h3>Burgers that have been eaten!</h3>
 
-  <div class="form-group">
-    <label for="bg">Burger Name:</label>
-    <input type="text" id="bg" name="burgerInput">
-  </div>
+        <div class="row">
 
-  <button type="submit">Add Burger</button>
-</form>
+          {{#each burgers}}
+            {{#if this.devoured}}
+              <div class="col s9 center-align">
+                <pre>{{this.id}}. {{this.burger_name}}</pre>
+              </div>
 
-<h2>Delete a burger</h2>
+              <div class="col s3">
+                <form action="burgers/update/{{this.ID}}?_method=PUT" method="POST">
+                  <input type="hidden" name="devoured" value="0">
+                  <button class="btn btn-warning pull-right" type="submit">UN-EAT BURGER</button>
+                </form>
+              </div>
+              
+            {{/if}}
+          {{/each}}
+        </div>
+        
+      </div>
+    </div>
 
-<ul>
-  {{#each burgers}}
-      <li>
-        {{this.id}}. {{this.burger_name}}
+    <h2>Add a burger</h2>
+    <form class="create-update-form" action="burgers/create" method="POST">
 
-        <form class="delete-form" action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
+      <div class="form-group">
+        <label for="bg">Burger Name:</label>
+        <input type="text" id="bg" name="burgerInput">
+      </div>
 
-          <div class="form-group">
-            <label for="brg">id of the burger you want to delete:</label>
-            <input type="text" id="brg" name="delete">
-          </div>
+      <button type="submit">Add Burger</button>
+    </form>
 
-          <button type="submit">DELETE Burger</button>
-        </form>
+    <h2>Delete a burger</h2>
 
-      </li>
-  {{/each}}
-</ul>
+    <ul>
+      {{#each burgers}}
+          <li>
+            {{this.id}}. {{this.burger_name}}
+
+            <form class="delete-form" action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
+
+              <div class="form-group">
+                <label for="brg">id of the burger you want to delete:</label>
+                <input type="text" id="brg" name="delete">
+              </div>
+
+              <button type="submit">DELETE Burger</button>
+            </form>
+
+          </li>
+      {{/each}}
+    </ul>
+
+</div>
 
 
 

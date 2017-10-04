@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var burger = require('../models')['burgers2'];
+var burger = require('../models')['Burger'];
 burger.sync();
 
 router.get('/', function (req, res){
